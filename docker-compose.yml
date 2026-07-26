@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./simulation-engine
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  mcp-agent:
+    build:
+      context: ./cognitive-agent
+    depends_on:
+      - backend
+    environment:
+      - PYTHONUNBUFFERED=1
+      - BACKEND_URL=http://backend:8000/api/v1
+      - BACKEND_WS_URL=ws://backend:8000/ws/logs
+
+  frontend:
+    build:
+      context: ./savings-dashboard
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend

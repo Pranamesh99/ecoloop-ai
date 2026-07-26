@@ -1,0 +1,10 @@
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.1
+pydantic>=2.7.4
+pydantic-settings>=2.3.4
+eppy>=0.5.63
+SQLAlchemy>=2.0.31
+websockets>=12.0
+asyncio
+pytest>=8.2.0
+httpx
